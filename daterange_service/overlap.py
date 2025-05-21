@@ -31,4 +31,3 @@ def check_overlap(ranges: OverlapRequest) -> OverlapResponse:
         overlap=False,
         details="No overlap"
     )
-

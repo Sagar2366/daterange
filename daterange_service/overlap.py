@@ -27,8 +27,8 @@ def check_overlap(ranges: OverlapRequest) -> OverlapResponse:
                 f"{latest_start.isoformat()} and {earliest_end.isoformat()}"
             )
         )
-    else:
-        return OverlapResponse(
-            overlap=False,
-            details="No overlap"
-        )
+    return OverlapResponse(
+        overlap=False,
+        details="No overlap"
+    )
+

@@ -1,7 +1,7 @@
 """Tests for the overlap API endpoint in daterange_service."""
 
 from fastapi.testclient import TestClient
-from daterange_service.app import app
+from daterange_service.fastapi import app
 
 client = TestClient(app)
 

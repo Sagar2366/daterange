@@ -1,7 +1,7 @@
 """Data models for date range overlap service."""
 
-from pydantic import BaseModel
 from datetime import datetime
+from pydantic import BaseModel
 
 
 class DateRange(BaseModel):

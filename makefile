@@ -7,7 +7,7 @@ test:
 	PYTHONPATH=. pytest
 
 run:
-	uvicorn daterange_service.app:app --reload
+	uvicorn daterange_service.fastapi:app --reload
 
 artifact:
 	tar czvf daterange_service.tar.gz daterange_service/*.py requirements.txt

@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: "3.8"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build (install dependencies)
+        run: make build
+
+      - name: Lint with flake8 and pylint
+        run: |
+          pip install flake8 pylint
+          flake8 .
+          pylint $(git ls-files '*.py')
+
+      - name: Run tests
+        run: make test
+
+      - name: Package artifact
+        run: make artifact
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daterange_service
+          path: daterange_service.tar.gz
+
+      - name: Clean up
+        run: make clean
